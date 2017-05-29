@@ -1,0 +1,31 @@
+=breadcrumb_tag do
+  %li.active
+    Пользователи
+  %li
+    Администрирование
+
+.page-header
+  %h1= t('headers.users.index')
+
+= link_to new_user_path, class: 'btn btn-success' do
+  = fa_icon :plus
+  = t('buttons.new.user')
+
+.index_table
+  .row
+    .col-md-4.center= User.human_attribute_name(:email)
+    .col-md-4.center= User.human_attribute_name(:birthday)
+
+  - @users.each do |user|
+    .row
+      .col-md-4.center= user.email
+      .col-md-4.center= lnil(user.birthday)
+      .col-md-4.center
+        = link_to edit_user_path(user), class: 'btn btn-info' do
+          = fa_icon :edit
+          = t('buttons.edit')
+        = link_to user, :method => :delete,
+        :data => { :confirm => t('buttons.confirm.user') },
+        class: 'btn btn-danger' do
+          = fa_icon :times
+          = t('buttons.destroy')

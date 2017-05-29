@@ -1,0 +1,28 @@
+.row
+  .col-md-6
+    .form-group
+      = fr.label :c_name
+      = fr.text_area :c_name, class: 'form-control', rows: 1
+      = fr.error_messages_for(:c_name)
+  .col-md-6
+    .form-group
+      = fr.label :description
+      = fr.text_area :description, class: 'form-control', rows: 1
+      = fr.error_messages_for(:description)
+.row
+  .col-md-6
+    .form-group
+      = fr.label :date_begin
+      .input-group.date.datepicker
+        = fr.text_field :date_begin, value: lnil(fr.object.date_begin), class: 'form-control'
+        %span.input-group-addon
+          %span.glyphicon.glyphicon-calendar
+      = fr.error_messages_for(:date_begin)
+  .col-md-6
+    .form-group
+      = fr.label :date_end
+      .input-group.date.datepicker
+        = fr.text_field :date_end, value: lnil(fr.object.date_end), class: 'form-control'
+        %span.input-group-addon
+          %span.glyphicon.glyphicon-calendar
+      = fr.error_messages_for(:date_end)

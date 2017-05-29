@@ -1,0 +1,68 @@
+=breadcrumb_tag do
+  %li.active
+    = link_to 'Экспонаты', exhibits_path
+  %li
+    = t('headers.exhibits.search')
+
+
+.page-header
+  %h1= t('headers.exhibits.search')
+
+
+.container
+  = form_tag(search_exhibits_path(), :method => "get") do
+    .row
+      .col-md-5
+        .form-group
+          = label_tag 'search', "Название экспоната"
+          = text_field_tag 'search[e_name]', params['search']['e_name'], placeholder: "Введите название экспоната", class: 'form-control'
+      .col-md-5
+        .form-group
+          = label_tag 'search', "Краткое описание"
+          = text_field_tag 'search[description_e]', params['search']['description_e'], placeholder: "Введите краткое описание экспоната", class: 'form-control'
+    .row
+      .col-md-5
+        .form-group
+          = label_tag 'search', "Страховая стоимость" 
+          = text_field_tag 'search[i_value]', params['search']['i_value'], placeholder: "Укажите страховую стоимость экспоната", class: 'form-control'
+      .col-md-5
+        .form-group
+          = label_tag 'search', "Век создания" 
+          = text_field_tag 'search[age]', params['search']['age'], placeholder: "Укажите век создания экспоната", class: 'form-control'
+    .row
+      .col-md-5
+        .form-group
+          = label_tag 'search', "Габаритные размеры"
+          = text_field_tag 'search[size]', params['search']['size'], placeholder: "Укажите габаритные размеры экспоната, включающие высоту, ширину, длину", class: 'form-control'
+      .col-md-5
+        .form-group
+          = label_tag 'search', "Условия содержания (температура, влажность и т.д.)" 
+          = text_field_tag 'search[condition]', params['search']['condition'], placeholder: "Укажите условия содержания экспоната", class: 'form-control'  
+          
+
+    = submit_tag(:search_button, value: 'Поиск', class: 'btn btn-default')
+    = link_to exhibits_path, class: 'btn btn-warning' do
+      = fa_icon :backward
+      = t('buttons.back')
+    = link_to root_path, class: "btn btn-primary" do
+      = fa_icon "home"
+      = t('buttons.home')
+
+.index_table
+  - @exhibits.each do |exhibit|
+    .row
+      .col-md-3.center= Exhibit.human_attribute_name(:e_name)
+      .col-md-3.center= Exhibit.human_attribute_name(:description_e)
+      .col-md-3.center= Exhibit.human_attribute_name(:i_value)
+      .col-md-3.center= Exhibit.human_attribute_name(:age)
+      .col-md-3.center= Exhibit.human_attribute_name(:size)
+      .col-md-3.center= Exhibit.human_attribute_name(:condition)
+    .row
+      .col-md-3.center= exhibit.e_name
+      .col-md-3.center= exhibit.description_e
+      .col-md-3.center= exhibit.i_value
+      .col-md-3.center= exhibit.age
+      .col-md-3.center= exhibit.size
+      .col-md-3.center.bottom20= exhibit.condition
+      .col-md-12.center
+        

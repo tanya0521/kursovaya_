@@ -1,0 +1,14 @@
+=breadcrumb_tag do
+  %li.active
+    = t('headers.collections.edit')
+  %li
+    = link_to(@collection.c_name, @collection)
+  %li
+    = link_to 'Коллекции', collections_path
+  %li
+    Музеи
+
+.page-header
+  %h1= t('headers.collections.edit')
+
+= render 'form'

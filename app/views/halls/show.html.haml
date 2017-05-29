@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @hall.name
+
+= link_to 'Edit', edit_hall_path(@hall)
+\|
+= link_to 'Back', halls_path

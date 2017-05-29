@@ -1,0 +1,12 @@
+=breadcrumb_tag do
+  %li.active
+    = t('headers.exhibits.new')
+  %li
+    = link_to 'Экспонаты', exhibits_path
+  %li
+    Музей
+
+.page-header
+  %h1= t('headers.exhibits.new')
+
+= render 'form'

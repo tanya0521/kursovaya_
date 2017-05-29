@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  e_name: MyText
+  description_e: MyText
+  i_value: 1
+  age: 1
+  size: MyString
+  condition: MyText
+  collection_id: 
+
+two:
+  e_name: MyText
+  description_e: MyText
+  i_value: 1
+  age: 1
+  size: MyString
+  condition: MyText
+  collection_id: 

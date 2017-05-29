@@ -1,0 +1,132 @@
+ru:
+  app:
+    name: Базовое приложение
+    search: Поиск экспонатов
+    company:
+      short_name: МПУ
+      department: Кафедра
+    users:
+      index: Список пользователей
+      new-button: Новый пользователь
+      edit: Редактирование пользователя
+      new: Создание пользователя
+    roles:
+      index: Список возможных ролей пользователей
+      new-button: Новая роль
+      edit: Редактирование роли
+      new: Создание роли
+    collections:
+      index: Список коллекций
+      new-button: Новая коллекция
+      edit: Редактирование коллекции
+      new: Создание коллекции
+    exhibits:
+      index: Список экспонатов
+      new-button: Новый экспонат
+      edit: Редактирование экспоната
+      new: Создание экспоната
+  helpers:
+    submit:
+      create: Сохранить
+      submit: Сохранить
+      update: Сохранить
+    sure: Действительно удалить?
+  buttons:
+    home: На главную
+    back: Назад
+    search: Поиск
+    edit: Редактировать
+    destroy: Удалить
+    show: Показать
+    add-hall: Добавить зал
+    destroy-hall: Удалить зал
+    confirm:
+      user: Действительно удалить пользователя?
+      role: Действительно удалить роль?
+      collection: Действительно удалить коллекцию?
+      exhibit: Действительно удалить экспонат?
+    new:
+      user: Новый пользователь
+      role: Новая роль
+      collection: Новая коллекция
+      exhibit: Новый экспонат
+  headers:
+    users:
+      edit: Редактирование пользователя
+      new: Новый пользователь
+      index: Список пользователей
+    roles:
+      index: Список возможных ролей пользователей
+      edit: Редактирование роли
+      new: Новая роль
+    collections:
+      index: Список коллекций
+      edit: Редактирование коллекции
+      new: Создание коллекции
+    exhibits:
+      index: Список экспонатов
+      edit: Редактирование экспоната
+      new:  Новый экспонат
+      search: Поиск экспоната 
+  views:
+    pagination:
+      first: ⇤
+      last: ⇥
+      previous: ←
+      next: →
+      truncate: …
+  activerecord:
+    models:
+      user: Пользователь
+      hall: Выстовочный зал
+      collection: Коллекция
+      exhibit: Экспонат
+    attributes:
+      user:
+        email: Пользовательское имя/электронная почта
+        birthday: Дата рождения
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+        reset_password_email_sent_at: Дата отправления письма для смены пароля
+        activation_state: Статус активации
+        activation_token_expires_at: Дата прекращения действия токена активации
+        last_login_at: Время последнего входа в систему
+        role_users: Роли
+      hall:
+        name: Название
+        collection: Коллекция
+      collection:
+        c_name: Название
+        description: Краткое описание
+        date_begin: Дата начала
+        date_end: Дата конца
+        hall: Выстовочный зал
+      exhibit:
+        e_name: Название
+        description_e: Краткое описание
+        i_value: Стоимость
+        age: Век
+        size: Размер
+        condition: Условия содержания
+        collection: Коллекция
+      role:
+        name: Обозначение
+        info: Краткое название
+        full_info: Описание
+      # nested_start
+      role_user: &role_users
+      # nested_finish
+        role: Роль
+        role_id: Роль
+        data: Параметры
+      # nested_start
+      user/role_users:
+        <<: *role_users
+      # nested_finish
+
+    errors:
+      models:
+        person:
+          attributes:
+            snils:
+              check_sum: имеет неправильную контрольную сумму

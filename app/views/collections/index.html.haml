@@ -1,0 +1,38 @@
+=breadcrumb_tag do
+  %li.active
+    Коллекции
+  %li
+    Музей
+
+.page-header
+  %h1= t('headers.collections.index')
+
+= link_to new_collection_path, class: 'btn btn-success' do
+  = fa_icon :plus
+  = t('buttons.new.collection')
+
+.index_table
+  .row
+    .col-md-3.center= Collection.human_attribute_name(:c_name)
+    .col-md-3.center= Collection.human_attribute_name(:description)
+    .col-md-3.center= Collection.human_attribute_name(:date_begin)
+    .col-md-3.center= Collection.human_attribute_name(:date_end)
+
+  - @collections.each do |collection|
+    .row
+      .col-md-3.center= collection.c_name
+      .col-md-3.center= collection.description
+      .col-md-3.center= collection.date_begin
+      .col-md-3.center.bottom20= collection.date_end
+      .col-md-12.center
+        = link_to collection, class: 'btn btn-warning' do
+          = fa_icon :eye
+          = t('buttons.show')
+        = link_to edit_collection_path(collection), class: 'btn btn-info' do
+          = fa_icon :edit
+          = t('buttons.edit')
+        = link_to collection, :method => :delete,
+        :data => { :confirm => t('buttons.confirm.collection') },
+        class: 'btn btn-danger' do
+          = fa_icon :times
+          = t('buttons.destroy')

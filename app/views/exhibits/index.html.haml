@@ -1,0 +1,55 @@
+=breadcrumb_tag do
+  %li.active
+    Экспонаты
+  %li
+    Музей
+
+.page-header
+  %h1= t('headers.exhibits.index')
+
+= link_to new_exhibit_path, class: 'btn btn-success' do
+  = fa_icon :plus
+  = t('buttons.new.exhibit')
+= link_to search_exhibits_path(), class: 'btn btn-default' do
+  = fa_icon :search
+  = t('buttons.search.Поиск')
+.row
+  .col-xs-12
+    %table.table.table-hover  
+      %tbody
+        - @exhibits.each do |exhibit|
+          %tr.active
+            %th= Exhibit.human_attribute_name(:e_name)
+            %td= exhibit.e_name
+          %tr
+            %th= Exhibit.human_attribute_name(:description_e)
+            %td= exhibit.description_e
+          %tr
+            %th= Exhibit.human_attribute_name(:i_value)
+            %td= exhibit.i_value
+          %tr
+            %th= Exhibit.human_attribute_name(:age)
+            %td= exhibit.age
+          %tr
+            %th= Exhibit.human_attribute_name(:size)
+            %td= exhibit.size
+          %tr
+            %th= Exhibit.human_attribute_name(:condition)
+            %td= exhibit.condition
+          %tr
+            %th= Exhibit.human_attribute_name(:condition)
+            %td= exhibit.condition
+          %tr
+            %td
+              = link_to exhibit, class: 'btn btn-warning' do
+                = fa_icon :eye
+                = t('buttons.show')
+              = link_to edit_exhibit_path(exhibit), class: 'btn btn-info' do
+                = fa_icon :edit
+                = t('buttons.edit')
+              = link_to exhibit, :method => :delete,
+              :data => { :confirm => t('buttons.confirm.exhibit') },
+              class: 'btn btn-danger' do
+                = fa_icon :times
+                = t('buttons.destroy')
+            %td

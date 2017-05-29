@@ -1,0 +1,6 @@
+.row
+  .col-md-12
+    .form-group
+      = f.label :collection_id
+      = f.select :collection_id,  Collection.all.map{|x| [x.c_name, x.id]}, {}, class: 'form-control'
+      = f.error_messages_for(:collection_id)

@@ -1,0 +1,48 @@
+= form_for @exhibit do |f|
+  = error_messages_for @exhibit
+  .row
+    .col-md-6
+      .form-group
+        = f.label :e_name
+        = f.text_area :e_name, class: 'form-control', rows: 1
+        = f.error_messages_for(:e_name)
+    .col-md-6
+      .form-group
+        = f.label :description_e
+        = f.text_area :description_e, class: 'form-control', rows: 1
+        = f.error_messages_for(:description_e)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :i_value
+        = f.number_field :i_value, class: 'form-control'
+        = f.error_messages_for(:i_value)
+    .col-md-6
+      .form-group
+        = f.label :age
+        = f.number_field :age, class: 'form-control'
+        = f.error_messages_for(:age)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :size
+        = f.text_field :size, class: 'form-control'
+        = f.error_messages_for(:size)
+    .col-md-6
+      .form-group
+        = f.label :condition
+        = f.text_area :condition, class: 'form-control', rows: 1
+        = f.error_messages_for(:condition)
+
+  %fieldset
+    %legend Поля для коллекции
+    %button.btn.btn-info#collection-change-new-btn Cоздать/редактировать
+    %button.btn.btn-info#collection-change-exist-btn Выбрать существующую/редактировать
+    %div.left#collection-change{"data-content-new": "#{new_collection_form(f)}",
+      "data-content-exist": "#{render 'exist_collection', f: f}"}
+      = f.fields_for(:collection) do |fr|
+        = fr.hidden_field(:id)
+        = render('exhibits/one_collection_form', fr: fr)
+
+  .form-actions
+    = f.submit nil, class: 'btn btn-primary'

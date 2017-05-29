@@ -1,0 +1,16 @@
+= form_for @hall do |f|
+  - if @hall.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@hall.errors.count, "error")} prohibited this hall from being saved:"
+      %ul
+        - @hall.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_area :name
+  .field
+    = f.label :collection
+    = f.text_field :collection_id
+  .actions
+    = f.submit 'Save'

@@ -1,0 +1,22 @@
+%h1 Список выставочных залов
+
+%table
+  %thead
+    %tr
+      %th Название 
+      %th Коллекция
+      %th
+      %th
+
+  %tbody
+    - @halls.each do |hall|
+      %tr
+        %td= hall.name
+        %td= hall.collection
+        %td= link_to 'Show', hall
+        %td= link_to 'Edit', edit_hall_path(hall)
+        %td= link_to 'Destroy', hall, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'Новый выставочный зал', new_hall_path

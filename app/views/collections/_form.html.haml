@@ -1,0 +1,61 @@
+= form_for @collection do |f|
+  = error_messages_for @collection
+  .form-actions.bottom20
+    = f.submit nil, class: 'btn btn-primary'
+
+  = f.hidden_field :hall_ids
+
+  .row
+    .col-md-6
+      .form-group
+        = f.label :c_name
+        = f.text_area :c_name, class: 'form-control', rows: 1
+        = f.error_messages_for(:c_name)
+    .col-md-6
+      .form-group
+        = f.label :description
+        = f.text_area :description, class: 'form-control', rows: 1
+        = f.error_messages_for(:description)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :date_begin
+        .input-group.date.datepicker
+          = f.text_field :date_begin, value: lnil(f.object.date_begin), class: 'form-control'
+          %span.input-group-addon
+            %span.glyphicon.glyphicon-calendar
+        = f.error_messages_for(:date_begin)
+    .col-md-6
+      .form-group
+        = f.label :date_end
+        .input-group.date.datepicker
+          = f.text_field :date_end, value: lnil(f.object.date_end), class: 'form-control'
+          %span.input-group-addon
+            %span.glyphicon.glyphicon-calendar
+        = f.error_messages_for(:date_end)
+
+  .col-md-12
+    #exist-halls
+      %h3 Добавление существующих залов
+      .row
+        .col-md-6
+          = select_tag :halls, options_from_collection_for_select(Hall.all, "id", "name"), class: 'form-control', id: "halls-select"
+        .col-md-6
+          #add-exist-hall.btn.btn-info
+            = fa_icon :plus
+            = t('buttons.add-hall')
+          #remove-exist-hall.btn.btn-danger
+            = fa_icon :times
+            = t('buttons.destroy-hall')
+      .row
+        .col-md-12
+          #list-exist-halls
+
+  .row
+    .bottom20.col-md-12
+      = link_to_add_hall(f)
+
+    - i = 0
+    = f.fields_for(:halls) do |fr|
+      = fr.hidden_field(:id)
+      = render('collections/one_hall_form', fr: fr, i: i += 1)
